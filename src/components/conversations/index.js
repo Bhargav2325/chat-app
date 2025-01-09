@@ -27,7 +27,7 @@ const Conversation = () => {
               : theme.palette.background.paper,
         }}
       >
-        <Message />
+        <Message menu={true}/>
       </Box>
       {/* Chat Footer */}
       <ChatFooter />

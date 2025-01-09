@@ -13,7 +13,7 @@ import { DotsThreeVertical, DownloadSimple, Image } from "phosphor-react";
 import React from "react";
 import { Message_options } from "../../data";
 
-const TextMsg = ({ el }) => {
+const TextMsg = ({ el, menu }) => {
   const theme = useTheme();
   return (
     <Stack direction="row" justifyContent={el.incoming ? "start" : "end"}>
@@ -36,12 +36,12 @@ const TextMsg = ({ el }) => {
         </Typography>
       </Box>
       {/*  */}
-      <MessageOptions />
+      {menu && <MessageOptions />}
     </Stack>
   );
 };
 
-const ReplyMsg = ({ el }) => {
+const ReplyMsg = ({ el, menu }) => {
   const theme = useTheme();
   return (
     <Stack direction="row" justifyContent={el.incoming ? "start" : "end"}>
@@ -80,12 +80,12 @@ const ReplyMsg = ({ el }) => {
           </Typography>
         </Stack>
       </Box>
-      <MessageOptions />
+      {menu && <MessageOptions />}
     </Stack>
   );
 };
 
-const LinkMsg = ({ el }) => {
+const LinkMsg = ({ el, menu }) => {
   const theme = useTheme();
   return (
     <Stack direction="row" justifyContent={el.incoming ? "start" : "end"}>
@@ -111,7 +111,7 @@ const LinkMsg = ({ el }) => {
             }}
           >
             <img
-              src={el.preview}
+              src="https://wallpapercave.com/wp/wp1912996.jpg"
               alt={el.message}
               style={{ maxHeight: 210, borderRadius: "10px" }}
             />
@@ -125,12 +125,12 @@ const LinkMsg = ({ el }) => {
           </Stack>
         </Stack>
       </Box>
-      <MessageOptions />
+      {menu && <MessageOptions />}
     </Stack>
   );
 };
 
-const DocMsg = ({ el }) => {
+const DocMsg = ({ el, menu }) => {
   const theme = useTheme();
   return (
     <Stack direction="row" justifyContent={el.incoming ? "start" : "end"}>
@@ -170,12 +170,12 @@ const DocMsg = ({ el }) => {
           </Typography>
         </Stack>
       </Box>
-      <MessageOptions />
+      {menu && <MessageOptions />}
     </Stack>
   );
 };
 
-const MediaMsg = ({ el }) => {
+const MediaMsg = ({ el, menu }) => {
   const theme = useTheme();
   return (
     <Stack direction="row" justifyContent={el.incoming ? "start" : "end"}>
@@ -192,7 +192,7 @@ const MediaMsg = ({ el }) => {
       >
         <Stack spacing={1}>
           <img
-            src={el.img}
+            src="https://wallpapercave.com/wp/wp1912996.jpg"
             alt={el.message}
             style={{ maxHeight: 210, borderRadius: "10px" }}
           />
@@ -204,7 +204,7 @@ const MediaMsg = ({ el }) => {
           </Typography>
         </Stack>
       </Box>
-      <MessageOptions />
+      {menu && <MessageOptions />}
     </Stack>
   );
 };
@@ -253,8 +253,10 @@ const MessageOptions = () => {
         }}
       >
         <Stack spacing={2} px={1}>
-          {Message_options.map((el,ind) => (
-            <MenuItem key={ind} onClick={handleClick}>{el.title}</MenuItem>
+          {Message_options.map((el, ind) => (
+            <MenuItem key={ind} onClick={handleClick}>
+              {el.title}
+            </MenuItem>
           ))}
         </Stack>
       </Menu>
